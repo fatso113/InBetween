@@ -1,0 +1,541 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/InGameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/green_background"
+    android:configChanges="keyboardHidden|orientation"
+    android:orientation="horizontal"
+    android:screenOrientation="landscape"
+    tools:context="com.BSU.inbetween.InGameActivity" >
+
+    <FrameLayout
+        android:id="@+id/pot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" >
+
+        <ImageView
+            android:id="@+id/pot_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/pot_contentDesc"
+            android:maxHeight="100dp"
+            android:maxWidth="100dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/pot" />
+
+        <TextView
+            android:id="@+id/pot_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/pot_text"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/potTextLarge"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/buttonContainer"
+        android:layout_width="220dp"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" >
+
+        <SeekBar
+            android:id="@+id/betBar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_above="@+id/bet"
+            android:layout_marginBottom="10dp"
+            android:progress="1" />
+
+        <TextView
+            android:id="@+id/betAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/betBar"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:text="@string/bet_amount"
+            android:textAppearance="?android:attr/textAppearance"
+            android:textSize="@dimen/inGameButtonTextSizeLarge" />
+
+        <Button
+            android:id="@+id/bet"
+            style="?android:attr/buttonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/bet_button_text"
+            android:textSize="@dimen/inGameHandTextLarge" />
+
+        <Button
+            android:id="@+id/pass"
+            style="?android:attr/buttonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/bet"
+            android:layout_toStartOf="@+id/bet"
+            android:text="@string/pass_button_text"
+            android:textSize="@dimen/inGameHandTextLarge" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/playerHand"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@id/buttonContainer"
+        android:layout_toStartOf="@id/buttonContainer" >
+
+        <TextView
+            android:id="@+id/playerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/playerHand_sub"
+            android:layout_alignLeft="@+id/playerHand_sub"
+            android:layout_alignStart="@+id/playerHand_sub"
+            android:text="@string/text_player"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/playerMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/playerHand_sub"
+            android:layout_alignEnd="@+id/playerHand_sub"
+            android:layout_alignRight="@+id/playerHand_sub"
+            android:text="@string/playerMoney"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="@dimen/inGameHandTextLarge" />
+
+        <RelativeLayout
+            android:id="@+id/playerHand_sub"
+            android:layout_width="@dimen/handWidth"
+            android:layout_height="@dimen/handHeight"
+            android:layout_alignParentBottom="true" >
+
+            <ImageView
+                android:id="@+id/playerCard1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:contentDescription="@string/player_card1_contentDesc"
+                android:src="@drawable/card_ace_of_spades" />
+
+            <ImageView
+                android:id="@+id/playerCard2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:contentDescription="@string/player_card2_contentDesc"
+                android:src="@drawable/card_ace_of_spades" />
+
+            <ImageView
+                android:id="@+id/playerFlippedCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/inGameFlippedCardLowerMargin"
+                android:contentDescription="@string/text_player_flippedCard"
+                android:src="@drawable/card_ace_of_spades" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ai1Hand"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_toLeftOf="@+id/pot"
+        android:layout_toStartOf="@+id/pot" >
+
+        <TextView
+            android:id="@+id/ai1Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ai1Hand_sub"
+            android:layout_alignLeft="@+id/ai1Hand_sub"
+            android:layout_alignStart="@+id/ai1Hand_sub"
+            android:text="@string/text_ai1"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="@dimen/inGameHandTextLarge" />
+
+        <TextView
+            android:id="@+id/ai1Money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ai1Hand_sub"
+            android:layout_alignEnd="@+id/ai1Hand_sub"
+            android:layout_alignRight="@+id/ai1Hand_sub"
+            android:text="@string/ai1Money"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="@dimen/inGameHandTextLarge" />
+
+        <RelativeLayout
+            android:id="@+id/ai1Hand_sub"
+            android:layout_width="@dimen/handWidth"
+            android:layout_height="@dimen/handHeight"
+            android:layout_alignParentBottom="true" >
+
+            <ImageView
+                android:id="@+id/ai1Card1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:contentDescription="@string/ai1_card1_contentDesc"
+                android:src="@drawable/card_ace_of_spades" />
+
+            <ImageView
+                android:id="@+id/ai1Card2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:contentDescription="@string/ai1_card2_contentDesc"
+                android:src="@drawable/card_ace_of_spades" />
+
+            <ImageView
+                android:id="@+id/ai1flippedCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/inGameFlippedCardLowerMargin"
+                android:contentDescription="@string/text_ai1_flippedCard"
+                android:src="@drawable/card_ace_of_spades" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ai2Hand"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true" >
+
+        <TextView
+            android:id="@+id/ai2Money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ai2Hand_sub"
+            android:layout_alignEnd="@+id/ai2Hand_sub"
+            android:layout_alignRight="@+id/ai2Hand_sub"
+            android:text="@string/ai2Money"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="@dimen/inGameHandTextLarge" />
+
+        <TextView
+            android:id="@+id/ai2Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ai2Hand_sub"
+            android:layout_alignLeft="@+id/ai2Hand_sub"
+            android:layout_alignStart="@+id/ai2Hand_sub"
+            android:text="@string/text_ai2"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="@dimen/inGameHandTextLarge" />
+
+        <RelativeLayout
+            android:id="@+id/ai2Hand_sub"
+            android:layout_width="@dimen/handWidth"
+            android:layout_height="@dimen/handHeight"
+            android:layout_alignParentBottom="true" >
+
+            <ImageView
+                android:id="@+id/ai2Card1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:contentDescription="@string/ai2_card1_contentDesc"
+                android:src="@drawable/card_ace_of_spades" />
+
+            <ImageView
+                android:id="@+id/ai2Card2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:contentDescription="@string/ai2_card2_contentDesc"
+                android:src="@drawable/card_ace_of_spades" />
+
+            <ImageView
+                android:id="@+id/ai2flippedCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/inGameFlippedCardLowerMargin"
+                android:contentDescription="@string/text_ai2_flippedCard"
+                android:src="@drawable/card_ace_of_spades" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ai3Hand"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_toLeftOf="@+id/pot"
+        android:layout_toStartOf="@+id/pot" >
+
+        <TextView
+            android:id="@+id/ai3Money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ai3Hand_sub"
+            android:layout_alignEnd="@+id/ai3Hand_sub"
+            android:layout_alignRight="@+id/ai3Hand_sub"
+            android:text="@string/ai3Money"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="@dimen/inGameHandTextLarge" />
+
+        <TextView
+            android:id="@+id/ai3Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ai3Hand_sub"
+            android:layout_alignLeft="@+id/ai3Hand_sub"
+            android:layout_alignStart="@+id/ai3Hand_sub"
+            android:text="@string/text_ai3"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="@dimen/inGameHandTextLarge" />
+
+        <RelativeLayout
+            android:id="@+id/ai3Hand_sub"
+            android:layout_width="@dimen/handWidth"
+            android:layout_height="@dimen/handHeight"
+            android:layout_alignParentBottom="true" >
+
+            <ImageView
+                android:id="@+id/ai3Card1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:contentDescription="@string/ai3_card1_contentDesc"
+                android:src="@drawable/card_ace_of_spades" />
+
+            <ImageView
+                android:id="@+id/ai3Card2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:contentDescription="@string/ai3_card2_contentDesc"
+                android:src="@drawable/card_ace_of_spades" />
+
+            <ImageView
+                android:id="@+id/ai3flippedCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/inGameFlippedCardLowerMargin"
+                android:contentDescription="@string/text_ai3_flippedCard"
+                android:src="@drawable/card_ace_of_spades" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ai4Hand"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@+id/nextRound"
+        android:layout_toStartOf="@+id/nextRound" >
+
+        <TextView
+            android:id="@+id/ai4Money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ai4Hand_sub"
+            android:layout_alignEnd="@+id/ai4Hand_sub"
+            android:layout_alignRight="@+id/ai4Hand_sub"
+            android:text="@string/ai4Money"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="@dimen/inGameHandTextLarge" />
+
+        <TextView
+            android:id="@+id/ai4Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ai4Hand_sub"
+            android:layout_alignLeft="@+id/ai4Hand_sub"
+            android:layout_alignStart="@+id/ai4Hand_sub"
+            android:text="@string/text_ai4"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="@dimen/inGameHandTextLarge" />
+
+        <RelativeLayout
+            android:id="@+id/ai4Hand_sub"
+            android:layout_width="@dimen/handWidth"
+            android:layout_height="@dimen/handHeight"
+            android:layout_alignParentBottom="true" >
+
+            <ImageView
+                android:id="@+id/ai4Card1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:contentDescription="@string/ai4_card1_contentDesc"
+                android:src="@drawable/card_ace_of_spades" />
+
+            <ImageView
+                android:id="@+id/ai4Card2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:contentDescription="@string/ai4_card2_contentDesc"
+                android:src="@drawable/card_ace_of_spades" />
+
+            <ImageView
+                android:id="@+id/ai4flippedCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/inGameFlippedCardLowerMargin"
+                android:contentDescription="@string/text_ai4_flippedCard"
+                android:src="@drawable/card_ace_of_spades" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ai5Hand"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true" >
+
+        <TextView
+            android:id="@+id/ai5Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ai5Hand_sub"
+            android:layout_alignLeft="@+id/ai5Hand_sub"
+            android:layout_alignStart="@+id/ai5Hand_sub"
+            android:text="@string/text_ai5"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="@dimen/inGameHandTextLarge" />
+
+        <TextView
+            android:id="@+id/ai5Money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ai5Hand_sub"
+            android:layout_alignEnd="@+id/ai5Hand_sub"
+            android:layout_alignRight="@+id/ai5Hand_sub"
+            android:text="@string/ai5Money"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="@dimen/inGameHandTextLarge" />
+
+        <RelativeLayout
+            android:id="@+id/ai5Hand_sub"
+            android:layout_width="@dimen/handWidth"
+            android:layout_height="@dimen/handHeight"
+            android:layout_alignParentBottom="true" >
+
+            <ImageView
+                android:id="@+id/ai5Card1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:contentDescription="@string/ai5_card1_contentDesc"
+                android:src="@drawable/card_ace_of_spades" />
+
+            <ImageView
+                android:id="@+id/ai5Card2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:contentDescription="@string/ai5_card2_contentDesc"
+                android:src="@drawable/card_ace_of_spades" />
+
+            <ImageView
+                android:id="@+id/ai5flippedCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/inGameFlippedCardLowerMargin"
+                android:contentDescription="@string/text_ai5_flippedCard"
+                android:src="@drawable/card_ace_of_spades" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/pause"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/pause_button_text"
+        android:textSize="@dimen/inGameHandTextLarge" />
+
+    <Button
+        android:id="@+id/nextRound"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/next_round_button_text"
+        android:textSize="@dimen/inGameHandTextLarge" />
+
+</RelativeLayout>

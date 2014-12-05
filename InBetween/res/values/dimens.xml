@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="handWidth">140dp</dimen>
+    <dimen name="handHeight">90dp</dimen>
+    <dimen name="handHeightLarge">200dp</dimen>
+    <dimen name="handWidthLarge">250dp</dimen>
+    <dimen name="inGameHandText">13sp</dimen>
+    <dimen name="inGameHandTextLarge">26sp</dimen>
+    <dimen name="inGameFlippedCardLowerMargin">5dp</dimen>
+    <dimen name="inGameFlippedCardLowerMarginLarge">20dp</dimen>
+    <dimen name="inGameButtonTextSize">18sp</dimen>
+    <dimen name="inGameButtonTextSizeLarge">30sp</dimen>
+    <dimen name="settingsLeftMargin">30dp</dimen>
+    <dimen name="settingsTopMargin">15dp</dimen>
+    <dimen name="settingsLeftMarginLarge">50dp</dimen>
+    <dimen name="settingsTopMarginLarge">25dp</dimen>
+    <dimen name="potText">25sp</dimen>
+    <dimen name="potTextLarge">40sp</dimen>
+    
+</resources>

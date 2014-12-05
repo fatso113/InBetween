@@ -1,0 +1,36 @@
+How to Play:
+1) Each player is dealt a hand of 2 cards.
+2) Make a guess: Will the 3rd card be In Between the cards in your hand?
+3) To Bet, move the slider to the amount you want, then hit 'Bet'. If you don't want to bet, just hit pass.
+4.) That's it! Then just hit 'Next Round' to go to the next round.
+
+Options and Settings:
+Before you start your game, you have an option of playing the game under different settings.
+1) Number of Players:
+Players can choose how many Computer Players they want to play against. The minimum is 2, and the max is 5.
+2) Default Pot Size:
+Players can set a default pot size before the start of the game. The minimum pot size is 100.
+3) Default Ante:
+Ante is the bid collected from every player at the beginning of each round. This amount can be changed in the settings. The minimum
+is 5 and the max is Starting Money divided by 20.
+4)Difficulty Level:
+Players can choose to play against harder Computer Players but turning on Hard Mode.
+Rules:
+1) Aces are counted as 1.
+2) Suits don't matter.
+3) Third card dealt must be In Between the current two cards. If a card of the same value is drawn, that is not In Between.
+4) Every player must be able to pay the ante at the beginning of the round to stay in the game.
+5) A player is returned his ante a pair is dealt.
+6) A player is automatically busted if he gets dealt two near value cards.
+EX: Player is dealt a 6 and a 7.
+
+Credits:
+1) Brandon Groff
+2) Mikel Adkins
+3) Rider Adkins
+4) Ujjwal Poudel
+
+Feedback? Email us!
+
+
+

@@ -1,0 +1,34 @@
+Comment jouer:
+1) Chaque joueur reçoit une main de deux cartes.
+2) Faites une conjecture: ce que la 3ème carte est entre les cartes dans votre main?
+3) Pour parier, déplacez le curseur vers le montant que vous voulez, puis frappé 'Bet'. Si vous ne voulez pas parier, vient de frapper passe.
+4.) Ce est tout! Puis appuyez simplement sur 'Next Round' pour passer à la prochaine ronde.
+
+Options et paramètres:
+Avant de commencer votre jeu, vous avez la possibilité de jouer le jeu sous différents réglages.
+1) Nombre de joueurs:
+Les joueurs peuvent choisir le nombre de joueurs Computer ils veulent jouer contre. Le minimum est de 2, et le maximum est de 5.
+2) Par défaut Pot Taille:
+Les joueurs peuvent définir une taille de pot par défaut avant le début du jeu. La taille du pot minimum est de 100.
+3) Par défaut Ante:
+Ante est l'offre recueillies auprès de chaque joueur au début de chaque tour. Ce montant peut être modifié dans les réglages. le minimum
+est 5 et le max commence argent divisé par 20.
+4) Niveau de difficulté:
+Les joueurs peuvent choisir de jouer contre plus dures joueurs d'ordinateur, mais l'activation du mode Difficile.
+règles:
+1) Aces sont comptés comme une.
+2) Les costumes ne comptent pas.
+3) La troisième carte doit être traitée entre les deux cartes actuelles. Si une carte de la même valeur est tirée, ce ne est pas entre les deux.
+4) Chaque joueur doit être en mesure de payer l'ante au début de la ronde de rester dans le jeu.
+5) Un joueur est retourné son ante une paire est traitée.
+6) Un joueur est automatiquement éclaté se il se reçoit deux cartes près de valeur.
+EX: Le joueur reçoit un 6 et un 7.
+
+Crédits:
+1) Brandon Groff
+2) Mikel Adkins
+3) Rider Adkins
+4) Ujjwal Poudel
+
+Commentaires? Écrivez-nous!
+

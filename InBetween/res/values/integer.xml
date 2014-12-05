@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="maxAmountOfAiPlayers">5</integer>
+    <integer name="defaultStartingMoney">100</integer>
+    <integer name="defaultStartingAnte">5</integer>
+    <integer name="defaultStartingPotSize">100</integer>
+    <integer name="defaultStartingAmountOfAIPlayers">1</integer>
+    <integer name="smallestBetAmount">1</integer>
+    <integer name="standardDeckSize">52</integer>
+    <integer name="cardsPerSuit">13</integer>
+    <integer name="cardsPerNumberValue">4</integer>
+    <integer name="highestRandomNumber">100</integer>
+</resources>

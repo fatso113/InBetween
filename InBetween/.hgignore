@@ -1,0 +1,15 @@
+
+syntax: regexp
+^gen/com/BSU/inbetween/R\.java$
+syntax: regexp
+^gen/com/BSU/inbetween/R\.java$
+syntax: regexp
+^bin$
+syntax: regexp
+^bin$
+syntax: regexp
+^gen/com/BSU/inbetween/R\.java$
+syntax: regexp
+^gen/com/BSU/inbetween/R\.java$
+syntax: regexp
+^gen/com/BSU/inbetween/R\.java$

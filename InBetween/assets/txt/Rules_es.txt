@@ -1,0 +1,34 @@
+Cómo jugar:
+1) Cada jugador recibe una mano de 2 cartas.
+2) Hacer una conjetura: ¿La tercera tarjeta de estar entre las cartas en la mano?
+3) Para apostar, mueva el control deslizante a la cantidad que usted quiere, después haga clic en "Apuesta". Si usted no quiere apostar, simplemente pulse pase.
+4.) Eso es todo! Luego simplemente pulse "Siguiente Ronda 'para ir a la siguiente ronda.
+
+Opciones y configuración:
+Antes de iniciar su juego, usted tiene la opción de jugar el juego en diferentes configuraciones.
+1) Número de jugadores:
+Los jugadores pueden elegir el número de jugadores de la computadora que quieren jugar en contra. El mínimo es 2 y el máximo es 5.
+2) Por defecto Pot Tamaño:
+Los jugadores pueden establecer un tamaño de olla defecto antes del inicio del juego. El tamaño mínimo de la olla es de 100.
+3) Por defecto Ante:
+Ante es la oferta tomadas de cada jugador al principio de cada ronda. Esta cantidad puede cambiar en la configuración. el mínimo
+es de 5 y el máximo está empezando dinero dividido por 20.
+4) Nivel de dificultad:
+Los jugadores pueden elegir jugar contra los jugadores más duros de ordenador, sino de encender el modo difícil.
+Reglas:
+1) Los ases cuentan como 1.
+2) Trajes no importan.
+3) Tercera carta repartida debe estar entre los actuales dos tarjetas. Si se extrae una carta del mismo valor, que no es en el medio.
+4) Cada jugador debe ser capaz de pagar la apuesta al comienzo de la ronda para permanecer en el juego.
+5) Un jugador se devuelve su apuesta un par se reparte.
+6) Un jugador se rompió de forma automática si se reparten dos cartas de valor cerca.
+EX: jugador recibe un 6 y un 7.
+
+Créditos:
+1) Brandon Groff
+2) Mikel Adkins
+3) Rider Adkins
+4) Ujjwal Poudel
+
+Comentarios? Envíenos un correo electrónico!
+

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/green_background"
+    android:configChanges="orientation"
+    android:orientation="vertical"
+    android:screenOrientation="portrait" >
+
+    <TextView
+        android:id="@+id/numCPUplayersText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="@dimen/settingsLeftMargin"
+        android:layout_marginStart="@dimen/settingsLeftMargin"
+        android:layout_marginTop="30dp"
+        android:text="@string/settings_cpuAmount_text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/inGameButtonTextSizeLarge" />
+
+    <EditText
+        android:id="@+id/numCPUplayers"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/numCPUplayersText"
+        android:layout_alignBottom="@+id/numCPUplayersText"
+        android:layout_toEndOf="@+id/numCPUplayersText"
+        android:layout_toRightOf="@+id/numCPUplayersText"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="@dimen/inGameButtonTextSizeLarge" >
+    </EditText>
+
+    <Switch
+        android:id="@+id/cpuDifficultySwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/numCPUplayersText"
+        android:layout_marginLeft="@dimen/settingsLeftMargin"
+        android:layout_marginStart="@dimen/settingsLeftMargin"
+        android:layout_marginTop="@dimen/settingsTopMargin"
+        android:text="@string/settings_hardCPU_text"
+        android:textSize="@dimen/inGameButtonTextSizeLarge" />
+
+    <TextView
+        android:id="@+id/potSizeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/cpuDifficultySwitch"
+        android:layout_marginLeft="@dimen/settingsLeftMargin"
+        android:layout_marginStart="@dimen/settingsLeftMargin"
+        android:layout_marginTop="@dimen/settingsTopMargin"
+        android:text="@string/settings_potSize_text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/inGameButtonTextSizeLarge" />
+
+    <EditText
+        android:id="@+id/potSize"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/potSizeText"
+        android:layout_toEndOf="@id/potSizeText"
+        android:layout_toRightOf="@id/potSizeText"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="@dimen/inGameButtonTextSizeLarge" />
+
+    <TextView
+        android:id="@+id/defAnteText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/potSizeText"
+        android:layout_marginLeft="@dimen/settingsLeftMargin"
+        android:layout_marginStart="@dimen/settingsLeftMargin"
+        android:layout_marginTop="@dimen/settingsTopMargin"
+        android:text="@string/settings_ante_text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/inGameButtonTextSizeLarge" />
+
+    <EditText
+        android:id="@+id/defaultAnte"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/defAnteText"
+        android:layout_toEndOf="@id/defAnteText"
+        android:layout_toRightOf="@id/defAnteText"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="@dimen/inGameButtonTextSizeLarge" >
+    </EditText>
+
+    <TextView
+        android:id="@+id/startMoneyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/defAnteText"
+        android:layout_marginLeft="@dimen/settingsLeftMargin"
+        android:layout_marginStart="@dimen/settingsLeftMargin"
+        android:layout_marginTop="@dimen/settingsTopMargin"
+        android:text="@string/settings_startMoney_text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/inGameButtonTextSizeLarge" />
+
+    <EditText
+        android:id="@+id/startMoney"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/startMoneyText"
+        android:layout_toEndOf="@+id/startMoneyText"
+        android:layout_toRightOf="@+id/startMoneyText"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="@dimen/inGameButtonTextSizeLarge" />
+
+    <Button
+        android:id="@+id/saveSettingsButton"
+        android:contentDescription="@string/settings_saveButton_contentDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/startMoney"
+        android:layout_marginTop="@dimen/settingsTopMarginLarge"
+        android:background="@drawable/save_button"
+        android:onClick="saveCurrentSettings"
+        android:src="@drawable/save_pressed" />
+    
+    <Button
+        android:id="@+id/restoreDefaultsButton"
+        android:contentDescription="@string/settings_defaultButton_contentDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/saveSettingsButton"
+        android:layout_marginTop="@dimen/settingsTopMarginLarge"
+        android:background="@drawable/default_settings_button"
+        android:onClick="restoreDefaultSettings"
+        android:src="@drawable/default_settings_button" />
+    
+</RelativeLayout>

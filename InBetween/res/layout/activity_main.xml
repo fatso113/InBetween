@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    style="@style/AppBaseTheme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center|center_vertical"
+    android:layout_weight="1"
+    android:background="@drawable/green_background"
+    android:baselineAligned="true"
+    android:divider="@drawable/main_menu_space"
+    android:dividerPadding="10dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:paddingBottom="40dp"
+    android:paddingTop="40dp"
+    tools:listitem="@android:layout/simple_list_item_2" >
+
+    <Button
+        android:id="@+id/playButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/play_button"
+        android:contentDescription="@string/main_playButton_contentDesc"
+        android:cropToPadding="false"
+        android:focusableInTouchMode="false"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp" />
+
+    <Button
+        android:id="@+id/helpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/help_button"
+        android:contentDescription="@string/main_helpButton_contentDesc"
+        android:cropToPadding="false"
+        android:focusableInTouchMode="false"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:src="@drawable/help_default" />
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/settings_button"
+        android:contentDescription="@string/main_settingsButton_contentDesc"
+        android:cropToPadding="false"
+        android:focusableInTouchMode="false"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:src="@drawable/settings_default" />
+
+</LinearLayout>
