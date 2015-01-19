@@ -83,5 +83,7 @@
     <string name="SettingsDefaultDialog">Default settings restored.</string>
     <string name="SettingsSavedDialog">Settings saved.</string>
     <string name="savedSettingsSharedValues">GameObjects</string>
+    <string name="gamesWonText">Wins: </string>
+    <string name="gamesLostText">Losses: </string>
 
 </resources>

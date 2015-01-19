@@ -10,4 +10,6 @@
     <integer name="cardsPerSuit">13</integer>
     <integer name="cardsPerNumberValue">4</integer>
     <integer name="highestRandomNumber">100</integer>
+    <integer name="numGamesWon">0</integer>
+    <integer name="numGamesLost">0</integer>
 </resources>
