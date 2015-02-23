@@ -75,6 +75,14 @@ public class GameSession extends Activity
         listener.onPotChange(gamePot.getPotSize());
     }
 
+    private void notifyPlayerMoney() {
+        listener.onPlayerMoneyChange(player.getMoney().getAmount());
+    }
+    
+    private void notifyAiMoneyChange(int index, int newValue) {
+        listener.onAiMoneyChange(index, newValue);
+    }
+
 	public void dealHands() {
 		setPlayerHand();
 		setAIPlayerHands();
@@ -101,15 +109,21 @@ public class GameSession extends Activity
 		if(cardsAreSameValue(getPlayer())){
 			int returnAmount = getPot().returnAnteAmount(anteAmount);
 			getPlayer().addMoney(returnAmount);
+            notifyPotSize();
+            notifyPlayerMoney();
 		}
 	}
-	
-	private void checkAIPlayersHandsForSameValue() {
+
+    private void checkAIPlayersHandsForSameValue() {
+        int i = 0;
 		for (AI_Player aiPlayer : aiPlayerList) {
 			if (cardsAreSameValue(aiPlayer)) {
 				int returnAnte = getPot().returnAnteAmount(anteAmount);
 				aiPlayer.addMoney(returnAnte);
+                notifyPotSize();
+                notifyAiMoneyChange(i, aiPlayer.getMoney().getAmount());
 			}
+            i++;
 		}
 	}
 		

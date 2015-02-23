@@ -44,6 +44,7 @@ public class InGameActivity extends Activity implements GameListener {
     private View layoutAI5;
     private View gameView;
     private TextView playerMoneyText;
+    private TextView potText;
 
     //TODO add custom listener to update fields as a live game
 
@@ -99,6 +100,7 @@ public class InGameActivity extends Activity implements GameListener {
         layoutAI4 = findViewById(R.id.ai4Hand);
         layoutAI5 = findViewById(R.id.ai5Hand);
         playerMoneyText = (TextView) findViewById(R.id.playerMoney);
+        potText = (TextView) findViewById(R.id.pot_text);
         gameView = findViewById(R.id.InGameLayout);
 	}
 	
@@ -278,18 +280,9 @@ public class InGameActivity extends Activity implements GameListener {
 				displayGameValues();
 				determineGameOver();
 				startRound();
-			} else {
-				isGameOver = true;
-				if (session.thereAreAIsLeft() == false) {
-					TextView potText = (TextView) findViewById(R.id.pot_text);
-					potText.setText("You won!");
-					showVictoryDialog();
-				} else {
-					TextView potText = (TextView) findViewById(R.id.pot_text);
-					potText.setText("GameOver");
-					GAMEOVER();
-				}
-			}
+			} //else {
+				//determineGameOver();
+			// }
 		}
 	};
 	
@@ -377,6 +370,7 @@ public class InGameActivity extends Activity implements GameListener {
 			private int index = 0;
 			@Override
 			public void onTick(long millisUntilFinished) {
+                // Loops through players until we find a player that is active
 				while(session.aiPlayerList.get(index).isKicked()){
 					index++;
 				}
@@ -529,15 +523,7 @@ public class InGameActivity extends Activity implements GameListener {
 	private void determineGameOver() {
         if (!session.doesGameContinue()) {
             isGameOver = true;
-            if (session.thereAreAIsLeft() == false) {
-                TextView potText = (TextView) findViewById(R.id.pot_text);
-                potText.setText("You won!");
-                showVictoryDialog();
-            } else {
-                TextView potText = (TextView) findViewById(R.id.pot_text);
-                potText.setText("GameOver");
-                GAMEOVER();
-            }
+            gameOver(session.thereAreAIsLeft());
         }
     }
 
@@ -546,9 +532,9 @@ public class InGameActivity extends Activity implements GameListener {
 		gameOverDialog.show(getFragmentManager(), "Game Over");
 	}
 
-	private void showVictoryDialog() {
+	private void showEndGameDialog() {
 		DialogFragment victoryDialog = new GameWonDialog();
-		victoryDialog.show(getFragmentManager(), "Congratulations, you won!");
+		victoryDialog.show(getFragmentManager(), "Game Over");
 	}
 	
 	@Override
@@ -567,6 +553,16 @@ public class InGameActivity extends Activity implements GameListener {
     }
 
     @Override
+    public void onPlayerMoneyChange(int newValue) {
+
+    }
+
+    @Override
+    public void onAiMoneyChange(int index, int newValue) {
+
+    }
+
+    @Override
     public void onPlayerBet() {
 
     }
@@ -582,8 +578,9 @@ public class InGameActivity extends Activity implements GameListener {
     }
 
     @Override
-    public void onGameOver() {
-
+    public void gameOver(boolean lose) {
+        potText.setText(lose ? "You lost!" : "You won!");
+        showEndGameDialog();
     }
 
     @Override
