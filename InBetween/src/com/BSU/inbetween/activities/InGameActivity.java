@@ -15,7 +15,7 @@ import android.widget.SeekBar.*;
 import com.BSU.inbetween.*;
 import com.edu.BSU.inbetween.common.*;
 
-public class InGameActivity extends Activity {
+public class InGameActivity extends Activity implements GameListener {
 	
 	boolean isRoundOver = false;
 	boolean isGameOver = false;
@@ -46,7 +46,7 @@ public class InGameActivity extends Activity {
     private TextView playerMoneyText;
 
     //TODO add custom listener to update fields as a live game
-    // Another todo
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -565,5 +565,30 @@ public class InGameActivity extends Activity {
 		DialogFragment leaveDialog = new LeaveGameDialog();
 		leaveDialog.show(getFragmentManager(), "Are you sure you want to leave?");
 	}
-	
+
+    @Override
+    public void onPotChange() {
+        
+    }
+
+    @Override
+    public void onPlayerBet() {
+
+    }
+
+    @Override
+    public void onAIPlayerBet(int index, int betAmount) {
+
+    }
+
+    @Override
+    public void onRoundOver() {
+
+    }
+
+    @Override
+    public void onGameOver() {
+
+    }
+    
 }
