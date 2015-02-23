@@ -526,25 +526,20 @@ public class InGameActivity extends Activity implements GameListener {
 		}}
 	}
 	
-	private void determineGameOver()
-	{
-		if (!session.doesGameContinue()) 
-		{
-			isGameOver = true;
-			if (session.thereAreAIsLeft() == false) 
-			{
-				TextView potText = (TextView) findViewById(R.id.pot_text);
-				potText.setText("You won!");
-				showVictoryDialog();
-			} 
-			else
-			{
-				TextView potText = (TextView) findViewById(R.id.pot_text);
-				potText.setText("GameOver");
-				GAMEOVER();
-			}
-		} 
-	}
+	private void determineGameOver() {
+        if (!session.doesGameContinue()) {
+            isGameOver = true;
+            if (session.thereAreAIsLeft() == false) {
+                TextView potText = (TextView) findViewById(R.id.pot_text);
+                potText.setText("You won!");
+                showVictoryDialog();
+            } else {
+                TextView potText = (TextView) findViewById(R.id.pot_text);
+                potText.setText("GameOver");
+                GAMEOVER();
+            }
+        }
+    }
 
 	private void GAMEOVER() {
 		DialogFragment gameOverDialog = new GameOverDialog();
@@ -567,7 +562,7 @@ public class InGameActivity extends Activity implements GameListener {
 	}
 
     @Override
-    public void onPotChange() {
+    public void onPotChange(int newAmount) {
         
     }
 
@@ -590,5 +585,15 @@ public class InGameActivity extends Activity implements GameListener {
     public void onGameOver() {
 
     }
-    
+
+    @Override
+    public void onAIKick(int index) {
+
+    }
+
+    @Override
+    public void onPlayerKick() {
+
+    }
+
 }

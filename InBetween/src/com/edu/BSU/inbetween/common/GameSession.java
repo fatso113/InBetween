@@ -11,17 +11,12 @@ public class GameSession extends Activity
 	private Pot gamePot;
 	private int AIPlayerCount;
 	private int potValue;
-	//private ArrayList<AI_Player> listOfPlayers;	DELETE??
 	private int startingMoney;
+    private Player player;
+    private AssetManager assets;
+    private GameListener listener;
 	public int anteAmount;
-	private Player player;
-	private AssetManager assets;
 	public boolean antesAreDetermined = false;
-	
-	public GameSession()
-	{
-		
-	}
 	
 	public GameSession(int AIPlayerCount, int startingMoney, int defaultPotValue, int anteAmount, AssetManager assetManager) {
 		this.AIPlayerCount = AIPlayerCount;
@@ -55,21 +50,30 @@ public class GameSession extends Activity
 		if (InBetweenRules.doesPlayerHaveEnoughMoney(player.getMoney(), anteAmount)) {
 			player.payAnte(anteAmount);
 			gamePot.addToPot(anteAmount);
+            notifyPotSize();
 		} else {
-			// GAME OVER
+			listener.onPlayerKick();
 		}
 	}
-	
-	private void payAIPlayerAntes() {
+
+    private void payAIPlayerAntes() {
+        int i = 0;
 		for (AI_Player aiPlayer: aiPlayerList) {
 			if (InBetweenRules.doesPlayerHaveEnoughMoney(aiPlayer.getMoney(), anteAmount)) {
 				aiPlayer.payAnte(anteAmount);
 				gamePot.addToPot(anteAmount);
+                notifyPotSize();
 			} else {
 				aiPlayer.kickAI();
+                listener.onAIKick(i);
 			}
+            i++;
 		}
 	}
+    
+    private void notifyPotSize() {
+        listener.onPotChange(gamePot.getPotSize());
+    }
 
 	public void dealHands() {
 		setPlayerHand();
