@@ -4,8 +4,8 @@ package com.edu.BSU.inbetween.common;
 // Make the hand just a collection (ArrayList<Card>) in order to easily support other games
 // (the hand won't always be just 2 cards for something like poker)
 
-public class Hand
-{
+public class Hand {
+    
 	private Card firstCard = new Card();
 	private Card secondCard = new Card();
 	

@@ -17,21 +17,22 @@ import com.edu.BSU.inbetween.common.*;
 
 public class InGameActivity extends Activity implements GameListener {
 	
-	boolean isRoundOver = false;
-	boolean isGameOver = false;
-	GameSession session;
-	boolean roundOver;
-	boolean displayAIOne = false;
-	boolean displayAITwo = false;
-	boolean displayAIThree = false;
-	boolean displayAIFour = false;
-	boolean displayAIFive = false;
+	private boolean isRoundOver = false;
+	private boolean isGameOver = false;
+    private GameSession session;
+    private GameListener listener;
+    private boolean roundOver;
+    private boolean displayAIOne = false;
+    private boolean displayAITwo = false;
+    private boolean displayAIThree = false;
+    private boolean displayAIFour = false;
+    private boolean displayAIFive = false;
 	private boolean betting;
 	private int betAmount = 1;
-	int aiPlayers;
-	int startingMoney;
-	int defaultPotSize;
-	int anteAmount;
+    private int aiPlayers;
+    private int startingMoney;
+    private int defaultPotSize;
+    private int anteAmount;
 	private String fileName = StringValues.SavedSettingsSharedValues.toString();
     private Button betButton;
     private Button passButton;
@@ -46,8 +47,18 @@ public class InGameActivity extends Activity implements GameListener {
     private TextView playerMoneyText;
     private TextView potText;
 
-    //TODO add custom listener to update fields as a live game
-
+    // TODO LIST
+    // View fragments?
+    // Scrap generic settings screen with actual settings/shared values screen
+    // Add custom listener to update fields as a live game
+    // Move all code within this Activity to GameSession and report back with GameListener
+    // Animations: Simple slide on fold
+    // Animations: flip cards on bet
+    // Animations: zoom up card on bet
+    // GamePlay: allow for skipping of AI player betting
+    // All cards are hidden to begin with
+    // Player hand is hidden unless they bet
+    
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -62,7 +73,7 @@ public class InGameActivity extends Activity implements GameListener {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_in_game);
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);// 0 means landscape or horizontal
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 	}
 
 	private void loadSavedSettings() {
@@ -85,6 +96,7 @@ public class InGameActivity extends Activity implements GameListener {
 	}
 	
 	private void populateVariablesAndButtons() {
+        listener = this;
 		betButton = (Button) findViewById(R.id.bet);
 		passButton = (Button) findViewById(R.id.pass);
 		pauseButton = (Button) findViewById(R.id.pause);

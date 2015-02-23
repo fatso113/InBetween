@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.res.AssetManager;
 
-public class GameSession extends Activity
-{
+public class GameSession extends Activity {
+    
 	public ArrayList<AI_Player> aiPlayerList = new ArrayList<AI_Player>();
 	private Pot gamePot;
 	private int AIPlayerCount;
@@ -34,11 +34,9 @@ public class GameSession extends Activity
 	
 	public void startNewRound() {
 		Dealer.generateDeck();
-		antesAreDetermined = false;
 		payAntes();
 		dealHands();
 		returnAnteIfSameValue();
-		antesAreDetermined = true;
 	}
 	
 	public void payAntes() {
@@ -51,6 +49,7 @@ public class GameSession extends Activity
 			player.payAnte(anteAmount);
 			gamePot.addToPot(anteAmount);
             notifyPotSize();
+            notifyPlayerMoney();
 		} else {
 			listener.onPlayerKick();
 		}
@@ -63,6 +62,7 @@ public class GameSession extends Activity
 				aiPlayer.payAnte(anteAmount);
 				gamePot.addToPot(anteAmount);
                 notifyPotSize();
+                notifyAiMoneyChange(i, aiPlayer.getMoney().getAmount());
 			} else {
 				aiPlayer.kickAI();
                 listener.onAIKick(i);
