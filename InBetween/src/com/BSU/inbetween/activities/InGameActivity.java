@@ -3,6 +3,7 @@ package com.BSU.inbetween.activities;
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -32,14 +33,27 @@ public class InGameActivity extends Activity {
 	int defaultPotSize;
 	int anteAmount;
 	private String fileName = StringValues.SavedSettingsSharedValues.toString();
+    private Button betButton;
+    private Button passButton;
+    private Button pauseButton;
+    private Button nextRoundButton;
+    private View layoutAI1;
+    private View layoutAI2;
+    private View layoutAI3;
+    private View layoutAI4;
+    private View layoutAI5;
+    private View gameView;
+    private TextView playerMoneyText;
 
+    //TODO add custom listener to update fields as a live game
+    // Another todo
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setFullScreenLandscape();
 		loadSavedSettings();
 		initializeSession();
-		prepareButtonsAndListeners();
+		populateVariablesAndButtons();
 		prepareGameValues(); 
 	}
 	
@@ -47,7 +61,7 @@ public class InGameActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_in_game);
-		setRequestedOrientation(0);// 0 means landscape or horizontal
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);// 0 means landscape or horizontal
 	}
 
 	private void loadSavedSettings() {
@@ -55,7 +69,7 @@ public class InGameActivity extends Activity {
 		try {
 			values = SharedValues.getInstance(this.getSharedPreferences(fileName, 4),this.getResources());
 		} catch (Exception e) {
-			Log.i("Shared Preferences IO ERROR:", e.getMessage());
+            Log.i("Shared Values", "Error Loading S.V.");
 		} finally {
 			aiPlayers = values.getAmountOfPlayers();
 			startingMoney = values.getStartingMoney();
@@ -69,16 +83,23 @@ public class InGameActivity extends Activity {
 		session.populatePlayerList();
 	}
 	
-	private void prepareButtonsAndListeners() {
-		Button betButton = (Button) findViewById(R.id.bet);
-		Button passButton = (Button) findViewById(R.id.pass);
-		Button pauseButton = (Button) findViewById(R.id.pause);
-		Button nextRoundButton = (Button) findViewById(R.id.nextRound);
+	private void populateVariablesAndButtons() {
+		betButton = (Button) findViewById(R.id.bet);
+		passButton = (Button) findViewById(R.id.pass);
+		pauseButton = (Button) findViewById(R.id.pause);
+		nextRoundButton = (Button) findViewById(R.id.nextRound);
 		betButton.setOnClickListener(betClick);
 		passButton.setOnClickListener(passClick);
 		pauseButton.setOnClickListener(pauseClick);
 		nextRoundButton.setOnClickListener(nextRoundClick);
 		nextRoundButton.setEnabled(false);
+        layoutAI1 = findViewById(R.id.ai1Hand);
+        layoutAI2 = findViewById(R.id.ai2Hand);
+        layoutAI3 = findViewById(R.id.ai3Hand);
+        layoutAI4 = findViewById(R.id.ai4Hand);
+        layoutAI5 = findViewById(R.id.ai5Hand);
+        playerMoneyText = (TextView) findViewById(R.id.playerMoney);
+        gameView = findViewById(R.id.InGameLayout);
 	}
 	
 	private void prepareGameValues() {
@@ -101,12 +122,9 @@ public class InGameActivity extends Activity {
 	}
 
 	private void toggleButtonStatus(boolean isRoundOver) {
-		Button passButton = (Button) findViewById(R.id.pass);
-		Button betButton = (Button) findViewById(R.id.bet);
-		Button nextButton = (Button) findViewById(R.id.nextRound);
 		passButton.setEnabled(!isRoundOver);
 		betButton.setEnabled(!isRoundOver);
-		nextButton.setEnabled(isRoundOver);
+		nextRoundButton.setEnabled(isRoundOver);
 	}
 	
 	private void hideTopCards() {
@@ -131,8 +149,7 @@ public class InGameActivity extends Activity {
 	}
 	
 	private void updateDisplay() {
-		View view = findViewById(R.id.InGameLayout);
-		view.invalidate();
+		gameView.invalidate();
 	}
 
 	private void setSeekBar() {
@@ -153,7 +170,6 @@ public class InGameActivity extends Activity {
 	}
 	
 	private void determineButtonDisplay() {
-		Button betButton = (Button) findViewById(R.id.bet);
 		if(session.cardsAreSameValue(session.getPlayer()) || InBetweenRules.isRangeOfCardsOne(session.getPlayer().getHand())){
 			betButton.setEnabled(false);
 		} else {
@@ -162,37 +178,12 @@ public class InGameActivity extends Activity {
 	}
 
 	private void displayAIPlayers() {
-		View layoutAI1 = findViewById(R.id.ai1Hand);
-		View layoutAI2 = findViewById(R.id.ai2Hand);
-		View layoutAI3 = findViewById(R.id.ai3Hand);
-		View layoutAI4 = findViewById(R.id.ai4Hand);
-		View layoutAI5 = findViewById(R.id.ai5Hand);
-		if (displayAIOne) {
-			layoutAI1.setVisibility(View.VISIBLE);
-		} else {
-			layoutAI1.setVisibility(View.INVISIBLE);
-		}
-		if (displayAITwo) {
-			layoutAI2.setVisibility(View.VISIBLE);
-		} else {
-			layoutAI2.setVisibility(View.INVISIBLE);
-		}
-		if (displayAIThree) {
-			layoutAI3.setVisibility(View.VISIBLE);
-		} else {
-			layoutAI3.setVisibility(View.INVISIBLE);
-		}
-		if (displayAIFour) {
-			layoutAI4.setVisibility(View.VISIBLE);
-		} else {
-			layoutAI4.setVisibility(View.INVISIBLE);
-		}
-		if (displayAIFive) {
-			layoutAI5.setVisibility(View.VISIBLE);
-		} else {
-			layoutAI5.setVisibility(View.INVISIBLE);
-		}
-	}
+        layoutAI1.setVisibility(displayAIOne ? View.VISIBLE : View.INVISIBLE);
+        layoutAI2.setVisibility(displayAITwo ? View.VISIBLE : View.INVISIBLE);
+        layoutAI3.setVisibility(displayAIThree ? View.VISIBLE : View.INVISIBLE);
+        layoutAI4.setVisibility(displayAIFour ? View.VISIBLE : View.INVISIBLE);
+        layoutAI5.setVisibility(displayAIFive ? View.VISIBLE : View.INVISIBLE);
+    }
 	
 	private void displayGameValues() {
 		displayPlayerMoney();
@@ -203,7 +194,6 @@ public class InGameActivity extends Activity {
 	}
 
 	private void displayPlayerMoney() {
-		TextView playerMoneyText = (TextView) findViewById(R.id.playerMoney);
 		playerMoneyText.setText(String.valueOf(session.getPlayer().getMoney().getAmount()));
 	}
 
@@ -312,8 +302,6 @@ public class InGameActivity extends Activity {
 	};
 
 	protected void toggleBetAndPassButton(boolean flipCase) {
-		Button passButton = (Button) findViewById(R.id.pass);
-		Button betButton = (Button) findViewById(R.id.bet);
 		passButton.setEnabled(!flipCase);
 		betButton.setEnabled(!flipCase);
 	}
@@ -342,8 +330,7 @@ public class InGameActivity extends Activity {
 	}
 	
 	private Card revealTopPlayerCard() {
-		Card topCard = new Card();
-		topCard = Dealer.revealTopCard();
+		Card topCard = Dealer.getCard();
 		updateCardImage(topCard, R.id.playerFlippedCard);
 		return topCard;
 	}
@@ -396,7 +383,7 @@ public class InGameActivity extends Activity {
 				int betAmount = session.aiPlayerList.get(index).getBetAmount();
 				if (betAmount > 0) {
 					Log.i("BETTING", "Index: " + index + " Bet Amount: " + betAmount);
-					Card flippedCard = Dealer.revealTopCard();
+					Card flippedCard = Dealer.getCard();
 					session.takeAIPlayerTurn(betAmount, index, flippedCard);
 					updateFlippedCardImage(index, flippedCard);
 				} else{

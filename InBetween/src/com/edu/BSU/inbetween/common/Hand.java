@@ -9,37 +9,32 @@ public class Hand
 	private Card firstCard = new Card();
 	private Card secondCard = new Card();
 	
-	public Hand(Card firstCard, Card secondCard)
-	{
+	public Hand(Card firstCard, Card secondCard) {
 		this.firstCard = firstCard;
 		this.secondCard = secondCard;
 	}
 	
-	public int getRange()
-	{
-		return Math.abs((firstCard.getValue() - secondCard.getValue()));
+	public int getRange() {
+		return Math.abs(firstCard.getValue() - secondCard.getValue());
 	}
 	
-	public Card getFirstCard()
-	{
+	public Card getFirstCard() {
 		return firstCard;
 	}
 	
-	public Card getSecondCard()
-	{
+	public Card getSecondCard() {
 		return secondCard;
 	}
 	
-	public void setFirstCard(Card settingCard)
-	{
+	public void setFirstCard(Card settingCard) {
 		firstCard = settingCard;
 	}
 	
-	public void setSecondCard(Card settingCard)
-	{
+	public void setSecondCard(Card settingCard) {
 		secondCard = settingCard;
 	}
-	public boolean areCardsSameValue(){
+	
+    public boolean areCardsSameValue(){
 		return firstCard.isSameValue(secondCard);
 	}
 }

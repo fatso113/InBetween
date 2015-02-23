@@ -14,7 +14,6 @@ public class Card{
 		this.value = value;
 	}
 
-	// compares cards in hand to the one drawn to see if they are in between
 	public boolean isBetween(Hand comparingHand) {
 		if (this.getValue() < comparingHand.getFirstCard().getValue()
 				&& this.getValue() > comparingHand.getSecondCard().getValue()) {
@@ -22,16 +21,12 @@ public class Card{
 		} else if (this.getValue() > comparingHand.getFirstCard().getValue()
 				&& this.getValue() < comparingHand.getSecondCard().getValue()) {
 			return true;
-		} else
-			return false;
+		}
+	    return false;
 	}
 
 	public boolean isSameValue(Card comparingCard) {
-		if (comparingCard.getValue() == value) {
-			return true;
-		}
-
-		return false;
+		return comparingCard.getValue() == value;
 	}
 
 	public void setSuit(Suit suit) {
@@ -49,4 +44,5 @@ public class Card{
 	public int getValue() {
 		return value;
 	}
+    
 }

@@ -49,6 +49,8 @@
             android:name="com.BSU.inbetween.activities.PausedActivity"
             android:label="@string/title_activity_paused" >
         </activity>
+        <activity android:name=".activities.SettingsActivityNew" />
+        <activity android:name=".activities.StatsActivity" />
     </application>
 
 </manifest>
